@@ -1,30 +1,13 @@
-import React, { useLayoutEffect, useRef } from 'react'
+import React, { useLayoutEffect, useRef, Ref } from 'react'
+import {ScrollPositionValues, ScrollPositionStore, ScrollPositionProps} from './types';
 
 
-export interface ScrollPositionValues {
-  /**
-   * scrollLeft/scrollX values from/for the node/window
-   */
-  x: number;
-
-  /**
-   * scrollTop/scrollY values from/for the node/window
-   */
-  y: number;
+export declare type ScrollPositionChildrenProps = {
+    rContainer: Ref<HTMLDivElement>,
+    getScroll: ScrollPositionValues,
+    getScrollNode: HTMLDivElement | undefined,
+    setScroll: (pos?: ScrollPositionValues) => void
 }
-
-
-/**
- * Object having get/set functions
- */
-
- export interface ScrollPositionStore {
-  data: Map<string, ScrollPositionValues>;
-  get(key: string): ScrollPositionValues | null;
-  set(key: string, data: ScrollPositionValues): void;
-}
-
-
 
 
 function getScrollPosition(target: any) : ScrollPositionValues {
@@ -68,11 +51,7 @@ export const memoryStore : ScrollPositionStore = {
 
 
 
-export interface ScrollPositionProps {
-    scrollKey?: string
-    store?: any,
-    children: any
-}
+
 
 const ScrollPosition = React.memo(({
     scrollKey = 'default',
@@ -80,18 +59,20 @@ const ScrollPosition = React.memo(({
     children,
     ...props
 }: ScrollPositionProps) => {
-    const rContainer = useRef<HTMLElement>(null)
+    const rContainer = useRef<HTMLDivElement>(null)
 
     const getScroll = () => {
         if (rContainer && rContainer.current) {
             return getScrollPosition(rContainer.current);
         }
+        return null;
     }
 
-    const getScrollNode = () : HTMLElement | undefined => {
+    const getScrollNode = () : HTMLDivElement | null => {
         if (rContainer && rContainer.current) {
             return rContainer.current;
         }
+        return null;
     }
 
     const setScroll = (pos?: ScrollPositionValues) => {
