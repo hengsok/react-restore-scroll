@@ -1,0 +1,53 @@
+{
+  "name": "react-restore-scroll",
+  "version": "1.1.1",
+  "description": "Remember and restore React scroll position for the nodes. This also works nicely with NextJS.",
+  "main": "dist/index.js",
+  "source": "src/index.tsx",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hengsok/react-restore-scroll.git"
+  },
+  "keywords": [
+    "react",
+    "scroll",
+    "scroll-position",
+    "restore scroll",
+    "nextjs"
+  ],
+  "author": "Heng Sok",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hengsok/react-restore-scroll/issues"
+  },
+  "homepage": "https://github.com/hengsok/react-restore-scroll#readme",
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.6.0",
+    "@types/jest": "^24.0.21",
+    "@types/node": "^12.12.5",
+    "@types/react": "^17.0.41",
+    "husky": "^3.0.9",
+    "jest": "^24.9.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.18.2",
+    "pretty-quick": "^2.0.0",
+    "react": "^17.0.2",
+    "ts-jest": "^24.1.0",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.6.4"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0 <19"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "precommit": "pretty-quick --staged",
+    "prepare": "tsc",
+    "build": "tsc",
+    "test-only": "jest"
+  }
+}
