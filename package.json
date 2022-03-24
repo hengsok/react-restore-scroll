@@ -1,6 +1,6 @@
 {
   "name": "react-restore-scroll",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "description": "Remember and restore React scroll position for the nodes. This also works nicely with NextJS.",
   "main": "dist/index.min.js",
   "source": "src/index.tsx",

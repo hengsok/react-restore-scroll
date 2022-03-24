@@ -1,6 +1,8 @@
-import React, { useLayoutEffect, useRef, Ref } from 'react'
+import React, { useEffect, useLayoutEffect, useRef, Ref } from 'react'
 import {ScrollPositionValues, ScrollPositionStore, ScrollPositionProps} from './types';
 
+
+const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect
 
 export declare type ScrollPositionChildrenProps = {
     rContainer: Ref<HTMLDivElement>,
@@ -83,7 +85,6 @@ const ScrollPosition = React.memo(({
     }
 
     const saveScroll = (key?: string) => {
-        console.debug(rContainer)
         if (rContainer && rContainer.current) {
             const pos = getScrollPosition(rContainer.current);
             key = key || scrollKey;
@@ -91,7 +92,7 @@ const ScrollPosition = React.memo(({
         }
     }
 
-    useLayoutEffect(() => {
+    useIsomorphicLayoutEffect(() => {
         setScroll();
         return function onUnmount() {
             saveScroll();
